@@ -1,0 +1,37 @@
+{
+  "name": "todo_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/wdio run wdio.conf.js --require @babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yug2002/todo_task.git"
+  },
+  "keywords": [
+    "bdd"
+  ],
+  "author": "Yury.Hamaniuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yug2002/todo_task/issues"
+  },
+  "homepage": "https://github.com/yug2002/todo_task#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-flow": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "@wdio/cli": "^6.1.25",
+    "@wdio/cucumber-framework": "^6.1.22",
+    "@wdio/local-runner": "^6.1.25",
+    "@wdio/spec-reporter": "^6.1.23",
+    "chai": "^4.2.0",
+    "chromedriver": "^83.0.1",
+    "wdio-chromedriver-service": "^6.0.3"
+  }
+}
