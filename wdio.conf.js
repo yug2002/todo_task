@@ -124,8 +124,15 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
-
+    reporters: [
+        'spec', 
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: true,
+            }
+        ]
+    ],
 
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
@@ -216,7 +223,7 @@ exports.config = {
     /**
      * Runs before a Cucumber scenario
      */
-    // beforeScenario: function (uri, feature, scenario, sourceLocation,c ontext) {
+    // beforeScenario: function (uri, feature, scenario, sourceLocation,context) {
     // },
     /**
      * Runs before a Cucumber step

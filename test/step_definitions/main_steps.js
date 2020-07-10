@@ -19,7 +19,6 @@ When (/^I type "(.*)" in input "(.*)" field on the "(.*)" page$/, async (text, t
 });
 
 When (/^I click on the "(.*)" button on the "(.*)" page$/, async (type, page) => {
-  await browser.pause(2000);
   const button = await pageFactory.getPage(page).inputFieldByType(type);
   return await button.click();
 });
@@ -30,5 +29,7 @@ When (/^I choose "(.*)" tab on the "(.*)" page$/, async (account, page) => {
 });
 
 Then(/^"(.*)" page is opened$/, async (page) => {  
+  const title = await pageFactory.getPage(page).pageTitle();
+  expect(await title.isDisplayed()).to.be.true;
   //expect(true).to.be.eql(true);
 });
