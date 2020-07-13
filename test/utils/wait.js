@@ -14,7 +14,7 @@
 
 export const waitFor = async (condition) => {
   const delay = 500;
-  let res = () => await condition;
+  let res = () => await condition();
   if(!res) {
     setTimeout(res, delay);
   }

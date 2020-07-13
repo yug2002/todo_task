@@ -10,9 +10,17 @@ export default class BasePage {
     return await browser.url(url);
   }
 
-  async elements(selector) {
-    const arr = await $$(selector);
-    const currArr = arr.map(element => new Element('', element));
+  async elements(selector, element) {
+    let arr = [];
+    if(element && selector){
+      let el = await element;
+      arr = await el.$$(selector);
+
+    } else {
+      arr = await $$(selector);
+    }
+    
+    let currArr = arr.map(element => new Element('', element));
     return currArr;
   }
 }

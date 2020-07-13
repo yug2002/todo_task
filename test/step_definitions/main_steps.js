@@ -30,6 +30,12 @@ When (/^I choose "(.*)" tab on the "(.*)" page$/, async (account, page) => {
 
 Then(/^"(.*)" page is opened$/, async (page) => {  
   const title = await pageFactory.getPage(page).pageTitle();
-  expect(await title.isDisplayed()).to.be.true;
-  //expect(true).to.be.eql(true);
+  return expect(await title.isDisplayed()).to.be.true;  
+});
+
+Then(/^I can see all menu components on the "(.*)" page$/, async (page, table) => {  
+  const comp = await pageFactory.getPage(page).getMenuItems(); 
+  let expectArr = table.raw().map(arr => arr[0]);  
+  let actualArr = await Promise.all(comp.map(async item => await item.getText())); 
+  expect(expectArr.toString()).to.be.eql(actualArr.toString());
 });
