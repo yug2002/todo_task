@@ -11,8 +11,8 @@ export default class ToDoPage extends BasePage {
   }
 
   async getMenuItems() {
-    const ms = await super.elements('//li[.//div/span]//span[not(@class)]', this.sidebar());   
-    return ms;
+    const menuElements = await super.elements(`//li[.//div/span]//*[contains(@class, '-title')]`, this.sidebar());   
+    return menuElements;
   }
 }
 
