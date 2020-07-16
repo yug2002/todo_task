@@ -34,8 +34,9 @@ Then(/^"(.*)" page is opened$/, async (page) => {
 });
 
 Then(/^I can see all menu components on the "(.*)" page$/, async (page, table) => {  
-  const comp = await pageFactory.getPage(page).getMenuItems(); 
+  const sidebar = await pageFactory.getPage(page).sidebar();
+  const items = await sidebar.menuItems(); 
   let expectArr = table.raw().map(arr => arr[0]);  
-  let actualArr = await Promise.all(comp.map(async item => await item.getText())); 
+  let actualArr = await Promise.all(items.map(async item => await item.getText())); 
   expect(expectArr.toString()).to.be.eql(actualArr.toString());
 });

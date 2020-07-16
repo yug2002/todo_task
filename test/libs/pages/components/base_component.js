@@ -1,18 +1,15 @@
-import Element from '../../elements/base/element'
+import Element from '../../elements/base/element';
+
 export default class Component extends Element {
-  constructor(parentSelector) {
-    this.componentSelector = parentSelector;    
-    this.component = () => $(this.componentSelector);
-    super('', this.component);    
+  constructor(parentSelector) {   
+    super(parentSelector);      
+    this.component = () => $(parentSelector);
   } 
-  async getElement(selector) {
-    let comp = await this.component();
-    return await comp.$(selector);
+  async findElement(selector) {    
+    return await super.findElement(selector);
   }
 
-  async getElements(selector) {
-    let comp = await this.component();
-    return await comp.$$(selector);
+  async findElements(selector) {    
+    return await super.findElements(selector);
   }
-
 }

@@ -23,7 +23,7 @@ export default class Element {
     await this.waitForElement();
     let input = await this.element;
     input.setValue(text);
-    return await browser.pause(1500);
+    return await browser.pause(2000);
   };
 
   async getText() {
@@ -38,8 +38,24 @@ export default class Element {
     return await element.isDisplayed();
   }
 
+  async getValue() {
+    await this.waitForElement();
+    let element = await this.element;
+    return await element.getValue();
+  }
+
   async waitForElement(milliseconds = data.timeout) {    
     let element = await this.element;
     return element.waitForExist({ timeout: milliseconds });
   };
+
+  async findElements(selector) {
+    let els = await (await this.element).$$(selector);
+    return els.map(element => new Element('', element));
+  }
+
+  async findElement(selector) {
+    let el = await (await this.element).$(selector);
+    return new Element('', el);
+  }
 }
