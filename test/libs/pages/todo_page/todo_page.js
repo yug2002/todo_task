@@ -28,6 +28,11 @@ export default class ToDoPage extends BasePage {
   async signOut() {
     await this.buttonContainsName('Account manager').click();    
     await this.linkByName('Sign out').click();
+    try{
+      await browser.acceptAlert();
+    } catch{
+      //skip
+    }    
     await wait.waitFor(async () => await this.signInLink().isDisplayed());    
   };
 }

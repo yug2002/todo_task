@@ -50,7 +50,7 @@ export default class Element {
     return element.waitForExist({ timeout: milliseconds });
   };  
 
-  async findElements(selector) { 
+  async findElements(selector) {     
     await waiter.waitFor (async () => (await (await this.element).$$(selector)).length > 0);
     let els = await (await this.element).$$(selector);
     return els.map (element => new Element('', element));
