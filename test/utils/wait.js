@@ -1,22 +1,20 @@
 'use strict'
+import * as data from '../constants/constants';
+const delay = data.timeout;
 
-export const waitFor = (condition) => new Promise(resolve => {
-  const delay = 500;
-  const f = () => {      
-    if (condition) {
+export const waitFor = (predicate, milliseconds = delay ) => {
+  return new Promise(resolve => {
+    const dl = 100;
+    let mls = milliseconds;
+    const f = async () => {
+      mls -= dl;
+      if (await predicate() || mls < dl) {
         resolve(true);
-    } else {
-        setTimeout(f, delay);
-    }
-  }
-  f();
-});
-
-// export const waitFor = async (condition) => {
-//   const delay = 500;
-//   let res = () => await condition();
-//   if(!res) {
-//     setTimeout(res, delay);
-//   }
-//   res();
-// };
+      }
+      else {
+        setTimeout(f, dl);
+      }
+    };
+    f();
+  });
+};

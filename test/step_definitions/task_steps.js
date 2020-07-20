@@ -21,8 +21,7 @@ When(/^I type task names in "(.*)" input field and click "(.*)" button on the "(
 When(/^I choose every task by order and click "(.*)" button on "(.*)" page$/,
 async (button, page) => {
   const todoPage = pageFactory.getPage(page);
-  const mainBar = await todoPage.mainbar();
-  await browser.pause(5000);
+  const mainBar = await todoPage.mainbar(); 
   const lineElements = await mainBar.taskLines();  
   for (var line of lineElements) {
       await line.click();
@@ -47,5 +46,4 @@ Then(/^I can see empty tasks list on "(.*)" page$/, async (page) => {
   const mainComp = await pageFactory.getPage(page).mainbar();
   let tasks = await mainComp.taskLines();
   expect(tasks.length).to.be.equals(0);
-})
-
+});
