@@ -1,6 +1,7 @@
 'use strict'
 
 import * as data from '../../../constants/constants';
+import * as waitFor from '../../../utils/wait';
 
 export default class Element {
   constructor(selector, element = null) {
@@ -50,11 +51,14 @@ export default class Element {
   };
 
   async findElements(selector) {
+    await this.waitForElement();
+  //await waitFor((await (await this.element).$$(selector)).length > 0);
     let els = await (await this.element).$$(selector);
     return els.map(element => new Element('', element));
-  }
+  };
 
   async findElement(selector) {
+    await this.waitForElement();
     let el = await (await this.element).$(selector);
     return new Element('', el);
   }

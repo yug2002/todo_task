@@ -8,15 +8,22 @@ export const componentLocators = {
     menuItem: `//li[.//div/span]//*[contains(@class, '-title')]`
   },
   mainBar: {
-    parent: `//div[@id='main']`,
-    inputByName: (name) => `//input[@aria-label='${name}']`,
-    buttonByName: (name) => `//button[@aria-label='${name}']`,
+    parent: `//div[@id='main']`,    
     taskLine: `//span[@class='taskItem-title']`,
   },
   rightBar: {
-    parent: `//div[@class='details']`,
+    parent: `//div[@class='details']`,    
+  },
+  modal: {
+    parent: `//div[contains(@class, 'modal main-')]`,
+    delete: `//button[@class='button red']`,
+    cancel: `//button[@class='button gray']`
+  },
+  common: {
     buttonByName: (name) => `//button[@aria-label='${name}']`,
+    inputByName: (name) => `//input[@aria-label='${name}']`
   }
+  
 };
 
 export const tasks = [

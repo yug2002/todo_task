@@ -1,22 +1,19 @@
 import BaseComponent from '../components/base_component';
 import * as data from '../../../constants/constants';
 
-const { mainBar: { inputByName : input, buttonByName : button,  taskLine } } = data.componentLocators;
+const { mainBar: { taskLine }, common: { buttonByName: button, inputByName: input } } = data.componentLocators;
 
 export default class MainBarComponent extends BaseComponent {
-  constructor(parentSelector) {
-    super(parentSelector);
-  };
-
+  
   async inputByName(name) {
-    return await super.findElement(input(name))
+    return await this.findElement(input(name))
   }
 
   async buttonByName(name) {
-    return await super.findElement(button(name));
+    return await this.findElement(button(name));
   }
 
   async taskLines() {
-    return await super.findElements(taskLine);
+    return await this.findElements(taskLine);
   }
 }

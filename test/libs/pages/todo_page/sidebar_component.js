@@ -5,12 +5,9 @@ import * as data from '../../../constants/constants';
 
 const { sideBar: { menuItem }} = data.componentLocators;
 
-export default class SideBarComponent extends Component {
-  constructor(parentSelector) {
-    super(parentSelector);
-  };
+export default class SideBarComponent extends Component {  
 
   async menuItems() {
-    return await super.findElements(menuItem);
+    return await this.findElements(menuItem);
   };
 }
